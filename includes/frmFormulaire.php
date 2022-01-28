@@ -10,4 +10,5 @@
     <br />
     <input type="reset" value="Effacer">
     <input type="submit" value="Clique-moi coquinou !">
+    <input type="hidden" name="frm">
 </form>
