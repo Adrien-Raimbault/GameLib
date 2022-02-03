@@ -1,4 +1,6 @@
 @import url('./reset.css');
+@import url('./formulaire.css');
+@import url(./table.css);
 
 *{
     --clr-1: hsl(37, 39%, 85%);
@@ -14,6 +16,7 @@
 body {
     background-color: var(--clr-5);
     color: var(--clr-2);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* max-width: 90vw; */
 }
 
