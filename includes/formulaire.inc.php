@@ -47,13 +47,13 @@ if (isset($_POST['frm'])) {
             $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
 
             $query = $conn->prepare("
-            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (:id, :nom, :prenom, :email, :pass1)");
+            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (?, ?, ?, ?, ?)");
 
-            $query->bindValue(':id', null);
-            $query->bindValue(':nom', $nom, PDO::PARAM_STR);
-            $query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-            $query->bindValue(':email', $email, PDO::PARAM_STR);
-            $query->bindValue(':pass1', $pass1, PDO::PARAM_STR);
+            $query->bindValue(1, null);
+            $query->bindValue(2, $nom, PDO::PARAM_STR);
+            $query->bindValue(3, $prenom, PDO::PARAM_STR);
+            $query->bindValue(4, $email, PDO::PARAM_STR);
+            $query->bindValue(5, $pass1, PDO::PARAM_STR);
             $query->execute();
             
             echo "<p>Insertion effectuée</p>";
