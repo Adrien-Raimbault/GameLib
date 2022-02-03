@@ -47,16 +47,9 @@ if (isset($_POST['frm'])) {
             $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
 
             $query = $conn->prepare("
-            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (:id, :nom, :prenom, :email, :pass1)");
+            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (?, ?, ?, ?, ?)");
 
-            $query->execute(array(
-                ":id" => null,
-                ":nom" => $nom,
-                ":prenom" => $prenom,
-                ":email" => $email,
-                ":pass1" => $pass1,
-
-            ));
+            $query->execute(array(null, $nom, $prenom, $email, $pass1,));
             echo "<p>Insertion effectuée</p>";
         }
         catch (PDOException $e){
