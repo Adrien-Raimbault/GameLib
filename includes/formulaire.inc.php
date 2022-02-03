@@ -43,14 +43,20 @@ if (isset($_POST['frm'])) {
 
         try {
             $conn = new PDO("mysql:host=$serverName; dbname=$userDB", $userName, $userPassword);
-            
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
 
-            $conn->beginTransaction();
-            $pass1=password_hash($pass1, PASSWORD_DEFAULT);
-            $sql1 = "INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (NULL, '$nom', '$prenom', '$email', '$pass1')";
+            $query = $conn->prepare("
+            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (:id, :nom, :prenom, :email, :pass1)");
 
-            $conn->exec($sql1);
-            $conn->commit();
+            $query->execute(array(
+                ":id" => null,
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":email" => $email,
+                ":pass1" => $pass1,
+
+            ));
             echo "<p>Insertion effectuée</p>";
         }
         catch (PDOException $e){
