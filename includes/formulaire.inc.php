@@ -60,7 +60,6 @@ if (isset($_POST['frm'])) {
             echo "<p>Insertion effectuée</p>";
         }
         catch (PDOException $e){
-            $conn->rollBack();
             die("Erreur : " . $e->getMessage());
         }
 
