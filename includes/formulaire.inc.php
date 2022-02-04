@@ -46,16 +46,16 @@ if (isset($_POST['frm'])) {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
 
-            // $query = $conn->prepare("
-            // INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (:id, :nom, :prenom, :email, :pass1)");
+            $query = $conn->prepare("
+            INSERT INTO UTILISATEURS(id_utilisateur, nom, prenom, mail, mdp) VALUES (:id, :nom, :prenom, :email, :pass1)");
 
-            // $id = null;
-            // $query->bindParam(':id', $id);
-            // $query->bindParam(':nom', $nom, PDO::PARAM_STR);
-            // $query->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-            // $query->bindParam(':email', $email);
-            // $query->bindParam(':pass1', $pass1);
-            // $query->execute();
+            $id = null;
+            $query->bindParam(':id', $id);
+            $query->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $query->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+            $query->bindParam(':email', $email);
+            $query->bindParam(':pass1', $pass1);
+            $query->execute();
 
             $update= $conn->prepare("
                 UPDATE utilisateurs

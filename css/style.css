@@ -1,5 +1,5 @@
 @import url('./reset.css');
-@import url('./formulaire.css');
+/* @import url('./formulaire.css'); */
 @import url(./table.css);
 
 *{
@@ -37,17 +37,24 @@ nav ul {
     justify-content: space-evenly;
 }
 
-a {
-    text-decoration: none;
-    color: var(--clr-1);
-}
-
 li {
     padding: 1em 1.5em;
     flex-grow: 1;
     text-align: center;
     background-color: var(--clr-3);
     border-radius: 0 0 0.2em 0.2em;
+}
+a {
+    text-decoration: none;
+    color: var(--clr-1);
+}
+
+li.login {
+    background-color: var(--clr-2);
+}
+
+li.login a {
+    color: var(--clr-5);
 }
 
 footer {

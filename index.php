@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Créé une session
 date_default_timezone_set('Europe/Paris');
 
 
