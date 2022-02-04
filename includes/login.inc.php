@@ -44,7 +44,12 @@ if (isset($_POST['frm'])) {
             // var_dump($resultat[0]['mdp']);
             else {
                 if (password_verify($mdp, $resultat[0]['mdp'])) {
-                    echo 'Password is valid!';
+                    if(!isset($_SESSION['login'])){
+                        $_SESSION['login'] = true;
+                        $_SESSION['nom'] = $resultat[0]['nom'];
+                        $_SESSION['prenom'] = $resultat[0]['prenom'];
+                        echo "<script>document.location.replace('http://localhost:8888/GameLib')</script>";
+                    }
                 } else {
                     echo $msgNoConnect;
                 }
