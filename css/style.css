@@ -11,6 +11,8 @@
 
     --clr-5: hsl(217, 89%, 11%);
 
+    --clr-alert: hsl(0, 52%, 36%);
+
 }
 
 body {
@@ -19,11 +21,13 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* max-width: 90vw; */
     margin: 2rem;
+    min-height: 100vh;
 }
 
 h1 {
     font-weight: 900;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 nav {
@@ -54,16 +58,23 @@ li.login {
     background-color: var(--clr-2);
 }
 li.logout {
-    background-color: rgb(138, 44, 44);
+    background-color: var(--clr-alert);
 }
-
 li.login a {
     color: var(--clr-5);
 }
+/******* FORMULAIRES ********/
 
+li.alert {
+    width: 50%;
+    margin: auto;
+    margin-top: 5px;
+    background-color: var(--clr-alert);
+    /* color: rgb(138, 44, 44); */
+}
+
+/******* FOOTER ********/
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     text-align: center;
     margin: 2em 0;
