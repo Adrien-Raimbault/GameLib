@@ -1,5 +1,6 @@
-<?php
+<h2>Se connecter</h2>
 
+<?php
 if (isset($_POST['frm'])) {
     $email= htmlentities(trim($_POST['email'])) ?? '';
     $mdp= htmlentities(trim($_POST['mdp'])) ?? '';
@@ -21,7 +22,7 @@ if (isset($_POST['frm'])) {
     if (count($erreurs) === 0) {
         $serverName = "localhost";
         $userName = "root";
-        $userDB = "exercice";
+        $userDB = "GameLib";
         $userPassword= "root";
 
 
@@ -30,7 +31,7 @@ if (isset($_POST['frm'])) {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-            $requete = $conn->prepare("SELECT * FROM UTILISATEURS WHERE mail ='$email'");
+            $requete = $conn->prepare("SELECT * FROM users WHERE email ='$email'");
             $requete->execute();
             $resultat = $requete->fetchAll(PDO::FETCH_ASSOC);
             
@@ -43,11 +44,12 @@ if (isset($_POST['frm'])) {
         
             // var_dump($resultat[0]['mdp']);
             else {
-                if (password_verify($mdp, $resultat[0]['mdp'])) {
+                if (password_verify($mdp, $resultat[0]['password'])) {
                     if(!isset($_SESSION['login'])){
                         $_SESSION['login'] = true;
-                        $_SESSION['nom'] = $resultat[0]['nom'];
-                        $_SESSION['prenom'] = $resultat[0]['prenom'];
+                        $_SESSION['nom'] = $resultat[0]['name'];
+                        $_SESSION['prenom'] = $resultat[0]['firstname'];
+                        $_SESSION['pseudo'] = $resultat[0]['pseudo'];
                         echo "<script>document.location.replace('http://localhost:8888/GameLib')</script>";
                     }
                 } else {
@@ -87,4 +89,4 @@ if (isset($_POST['frm'])) {
 
 include './includes/frmLogin.php';
 ?>
-<p>Pas encore de compte ? <a href="index.php?page=formulaire">Créer un compte</a> </p>
+<p>Pas encore de compte ? <a href="index.php?page=inscription">Créer un compte</a> </p>
