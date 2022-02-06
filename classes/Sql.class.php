@@ -25,7 +25,7 @@ class Sql {
         }
     }
 
-    public function insert(sql){
+    public function insert($sql){
         $this->connexion->beginTransaction();
         $this->connexion->exec($sql);
         $this->connexion->commit();
