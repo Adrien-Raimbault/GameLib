@@ -1,9 +1,7 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/osx,linux,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=osx,linux,windows,visualstudiocode
-/avatars
-favicon*
-/includes/tableaux.html
+
 ### Linux ###
 *~
 
@@ -96,3 +94,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/osx,linux,windows,visualstudiocode
+.vscode/extensions.json
+/avatars
+favicon*
+/includes/tableaux.html
