@@ -1,7 +1,6 @@
 <?php
 date_default_timezone_set('Europe/Paris');
 
-
 if (isset($_POST['inscription'])) {
     $name = htmlentities(trim($_POST['name'])) ?? '';
     $firstname = htmlentities(trim($_POST['firstname'])) ?? '';
@@ -17,10 +16,13 @@ if (isset($_POST['inscription'])) {
     $message = "Veuillez renseigner votre ";
     $msgErrAlpha = "Veuillez saisir des caractères alphabéthiques";
 
-    if (strlen($name) === 0)
-        array_push($erreurs, $message . "votre nom");
-        elseif (!ctype_alpha($name))
-        array_push($erreurs, $msgErrAlpha);
+    // if (strlen($name) === 0)
+    //     array_push($erreurs, $message . "votre nom");
+    //     elseif (!ctype_alpha($name))
+    //     array_push($erreurs, $msgErrAlpha);
+
+    if (preg_match('/(*UTF8)[[:alpha:]]+$/', $name) !== 1)
+        array_push($erreurs, "Veuillez saisir votre nom");
 
     if (strlen($firstname) === 0)
         array_push($erreurs, $message . "votre prénom");
