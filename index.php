@@ -1,6 +1,7 @@
 <?php
 session_start(); // Créé une session
 date_default_timezone_set('Europe/Paris');
+setlocale(LC_ALL, 'fr_FR', 'fr', 'FR');
 
 
 // Auto Load des classes
